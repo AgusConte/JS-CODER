@@ -50,3 +50,4 @@
     console.log("El promedio es "+promedio);
     console.log("El numero maximo es "+numeroMaximo);
     console.log("El numero minimo es "+numeroMinimo);
+    
