@@ -32,7 +32,7 @@ for (let i = 0; i < cantidadAlumnos; i++) {
 
     
     for (let i=0; i < cantidadNotas; i++ ) {
-        numero = parseInt(prompt("Coloca el número a calcular"));
+        numero = parseInt(prompt(`Número ${i + 1} a calcular`));
         while (isNaN(numero)) {
             numero = parseInt(prompt("ERROR: Ingresa un número válido"));
         }
@@ -54,5 +54,5 @@ for (let i = 0; i < cantidadAlumnos; i++) {
 
 console.log("Datos de los alumnos:");
 alumnos.forEach(alumno => {
-    console.log(`Nombre: ${alumno.nombre}, Promedio: ${alumno.notapromedio}`);
+    console.log(`Nombre: ${alumno.nombre} -- Promedio: ${alumno.notapromedio}`);
 });
