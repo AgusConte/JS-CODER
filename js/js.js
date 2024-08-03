@@ -1,52 +1,58 @@
-
-
-let contador;
 let acumulador;
 let promedio;
 let numero;
-let banderaDelPrimero;
-let numeroMaximo;
-let numeroMinimo;
-let cantidad;
+let cantidadAlumnos;
+let cantidadNotas;
+let respuesta;
+
+const alumnos = [];
 
 
+cantidadAlumnos = parseInt(prompt("¿Cuántos alumnos son?"));
+while (isNaN(cantidadAlumnos) || cantidadAlumnos <= 0) {
+    cantidadAlumnos = parseInt(prompt("ERROR: Ingresa un número válido para la cantidad de alumnos"));
+}
 
-contador=0;
-acumulador=0;
-banderaDelPrimero = true;
-numeroMaximo = -Infinity;
-numeroMinimo = Infinity;
 
-cantidad = parseInt(prompt("Cuantas Notas Quieres Promediar?"))
+for (let i = 0; i < cantidadAlumnos; i++) {
+    
+    let nombre = prompt(`Introduce el nombre del alumno ${i + 1}:`);
+    while (!isNaN(nombre)){
+        nombre = prompt("ERROR: Ingresa Texto");
+    }
+    
+    acumulador = 0;
+    contador = 0;
+    respuesta = "si";
 
-for(let i = 0;   i < cantidad;  i++){
-numero = parseInt(prompt("Coloca el numero a calcular"));
-    while(isNaN(numero)){
-        numero = parseInt(prompt("ERROR : ingresa un numero"));
+    cantidadNotas = parseInt(prompt(`¿Cuántas notas quieres promediar para el alumno ${nombre}?`));
+    while (isNaN(cantidadNotas) || cantidadNotas <= 0) {
+        cantidadNotas = parseInt(prompt("ERROR: Ingresa un número válido para la cantidad de notas"));
+    }
+
+    
+    for (let i=0; i < cantidadNotas; i++ ) {
+        numero = parseInt(prompt("Coloca el número a calcular"));
+        while (isNaN(numero)) {
+            numero = parseInt(prompt("ERROR: Ingresa un número válido"));
         }
-    acumulador = acumulador + numero;
-    contador = contador + 1;
-
-    if(banderaDelPrimero == true){
-        numeroMaximo = numero;
-        numeroMinimo = numero;
-        banderaDelPrimero = false;
+        acumulador += numero;
+        contador++;
+        
     }
 
-    else if( numero > numeroMaximo){
-        numeroMaximo = numero;
-    }
+    
+    promedio = acumulador / contador;
 
-    else if( numero < numeroMinimo ){
-        numeroMinimo= numero;
-    }
-    respuesta = prompt("Desea continuar? (coloque Si)");
-    }
-
-promedio = acumulador / contador;
+    
+    alumnos.push({
+        nombre: nombre,
+        notapromedio: promedio
+    });
+}
 
 
-console.log("La suma total es "+acumulador);
-console.log("El promedio es "+promedio);
-console.log("El numero maximo es "+numeroMaximo);
-console.log("El numero minimo es "+numeroMinimo);
+console.log("Datos de los alumnos:");
+alumnos.forEach(alumno => {
+    console.log(`Nombre: ${alumno.nombre}, Promedio: ${alumno.notapromedio}`);
+});
